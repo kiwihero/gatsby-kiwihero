@@ -1,0 +1,49 @@
+---
+title: "Playing with rhythm in Tone.js"
+date: "2021-06-07"
+---
+
+
+## Synths
+As always we create the synth. This time we are using 3 synths for triple the fun. As a side note, toMaster is deprecated and  toDestination connects the output to the context's destination node.
+
+```
+const synthA = new Tone.PolySynth().toDestination();
+const synthB = new Tone.FMSynth().toDestination();
+const synthC = new Tone.AMSynth().toDestination();
+```
+## Loops and Callbacks 
+To create loops and callbacks at a specfic interval use Tone.Loop. Below we have three loops for each of the synths above.  
+
+```
+//play a note every sixteenth-note
+const loopA = new Tone.Loop(time => {
+	synthA.triggerAttackRelease("C2", "8n", time);
+}, "16n").start(0);
+
+//play another note every off quarter-note, starting it "2n"
+const loopB = new Tone.Loop(time => {
+	synthB.triggerAttackRelease("D2", "8n", time);
+}, "4n").start("2n");
+
+//play another note every off half-note,by starting it "2n"
+const loopC = new Tone.Loop(time => {
+	synthC.triggerAttackRelease("E2", "8n", time);
+}, "2n").start("2n");
+ ```
+Don't forget to start the sound.
+ 
+```
+Tone.Transport.start()
+``` 
+## Bpm 
+For the bpm , we are ramping it up to 135 over 10 seconds.
+
+```
+Tone.Transport.bpm.rampTo(135, 10);
+```
+
+The end result is that the audio plays the synths and their respective loops. Also its a quick way to create a bassline. 
+
+### Resources
+[Tone.js](https://tonejs.github.io/)

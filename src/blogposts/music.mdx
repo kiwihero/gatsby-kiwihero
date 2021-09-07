@@ -1,0 +1,51 @@
+---
+title: Adding effects in Tone.js
+date: "2021-06-09"
+hero_image: "./nikolai-chernichenko-QOLyehGXRyA-unsplash.jpg"
+hero_image_credit_text: "Nikolai Chernichenko"
+hero_image_credit_link: "https://unsplash.com/photos/QOLyehGXRyA"
+---
+
+## Distortion
+To start off we create a simple distortion effect that will play in the beginning. 
+
+```
+const dist = new Tone.Distortion(0.8).toDestination();
+const fm = new Tone.FMSynth().connect(dist);
+fm.triggerAttackRelease("G1", "8n");
+```
+
+## FeedbackDelay
+
+FeedbackDelay is a DelayNode in which part of output signal is fed back into the delay. 
+
+```
+const feedbackDelay = new Tone.FeedbackDelay("8n", 0.5).toDestination();
+const tom = new Tone.MembraneSynth({
+	octaves: 4,
+	pitchDecay: 0.1
+}).connect(feedbackDelay);
+tom.triggerAttackRelease("A3", "32n");
+```
+
+
+## PingPongDelay 
+Just as the name suggests it  sounds like a ping pong. PingPongDelay is feedback delay effect where the effect is echoed in one channel and is play next in the opposite channel. This is a PingPongDelay effect. 
+
+```
+const pingPong = new Tone.PingPongDelay("4n", 0.2).toDestination();
+const drum = new Tone.MembraneSynth().connect(pingPong);
+drum.triggerAttackRelease("C4", "32n");
+```
+Note that each delay is routed to a different channel. Effects can also be looped. 
+
+```
+const pingPong = new Tone.PingPongDelay("4n", 0.2).toDestination();
+const drum = new Tone.MembraneSynth().connect(pingPong);
+
+const loop = new Tone.Loop(time => {
+	drum.triggerAttackRelease("C4", "32n");
+}, "2n").start(0);
+```
+### Resources
+More effects are in the [Tone.js documentation](https://tonejs.github.io/docs/14.7.77/index.html).

@@ -1,0 +1,43 @@
+$nav-color:#000;
+$link-color:#fff;
+$title-color: #000;
+$hover-color: #A7FF83;
+
+
+.header{
+    padding: 1rem 0 3rem;
+}
+
+.title{
+    color: $title-color;
+    font-size: 3rem;
+    text-decoration: none;
+
+}
+
+.navbar{
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    background-color: $nav-color;
+}
+
+.navList{
+    display: flex;
+}
+
+
+.navItem{
+    color:$link-color;
+    font-size: 1rem;
+    margin-right: 1.3rem;
+    text-decoration: none;
+}
+
+.navItem:hover{
+    color: $hover-color;
+}
+
+.activeNavItem{
+   color:#E1F8D4;
+}
