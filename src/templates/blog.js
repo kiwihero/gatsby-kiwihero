@@ -7,8 +7,8 @@ import Layout from '../components/layout';
 import Head from "../components/head"
 
 export const query = graphql`
-  query($slug:String) {
-      contentfulBlogPosts(slug:{eq:$slug}) {
+  query($slug: String) {
+      contentfulBlogPosts(slug: {eq: $slug}) {
         id
         title
         slug

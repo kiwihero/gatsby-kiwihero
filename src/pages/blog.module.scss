@@ -1,4 +1,4 @@
-
+$text-color : #000;
 
 .posts{
     list-style-type: none;
@@ -7,7 +7,15 @@
 }
 
 .post{
-    background-color: #A7FF83;
+    margin: 1rem 0;
    text-decoration: none;
+
+  a{
+      background-color: #A7FF83;
+      color: $text-color;
+      display: block;
+      padding: 1rem;
+      text-decoration: none;
+  }
 }
 
