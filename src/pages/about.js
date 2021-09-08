@@ -16,10 +16,9 @@ const AboutPage = () => {
              The story of how I became a developer is an interesting one. 
              My first experience in coding was at a summer camp when I was young.
              I learned how to design websites and that was my introduction to web development.
-             When I got to college, my original major was music. I switched 
-             to computer science in my freshman year. I was a violist and made 
-             the switch to become a developer. It was difficult at first, but I found my
-             passion by building new things.
+             In college , I switched from music to computer science in my freshman year.
+             I was a violist and made the switch to become a developer. It was difficult at first, 
+             but I found my passion by building new things.
             </p>
       <p>
                 My expertise is in web and mobile development.
